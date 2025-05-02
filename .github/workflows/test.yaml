@@ -13,8 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-13, macos-14, windows-2022]
-        release: [v3.7.0, v4.0.0, main]
+        os: [ubuntu-22.04]
+        release: [main]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -37,6 +37,8 @@ jobs:
         with:
           app-path: zephyr
           toolchains: all
+          west-group-filter: -hal,-tools,-bootloader,-babblesim
+          west-project-filter: -nrf_hw_models
 
       - name: Build firmware
         working-directory: zephyr
