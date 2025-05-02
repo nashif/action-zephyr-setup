@@ -182,6 +182,7 @@ runs:
           mkdir zephyr-sdk
           tar xvf $SDK_FILE -C zephyr-sdk --strip-components=1
         fi
+        echo "ZEPHYR_SDK_INSTALL_DIR=${PWD}/zephyr-sdk" >> $GITHUB_ENV
 
     - name: Setup Zephyr SDK
       working-directory: ${{ inputs.base-path }}/zephyr-sdk
